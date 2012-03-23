@@ -24,9 +24,9 @@
 		function checkElement(timer, override) {
 			var elTxt = jQuery(timer.el).val();
 
-			// Fire if text > options.captureLength AND text != saved txt OR if override AND text > options.captureLength
-			if ((elTxt.length > options.captureLength && elTxt.toUpperCase() != timer.text)
-			|| (override && elTxt.length > options.captureLength)) {
+			// Fire if text >= options.captureLength AND text != saved txt OR if override AND text >= options.captureLength
+			if ((elTxt.length >= options.captureLength && elTxt.toUpperCase() != timer.text)
+			|| (override && elTxt.length >= options.captureLength)) {
 				timer.text = elTxt.toUpperCase();
 				timer.cb(elTxt);
 			}
