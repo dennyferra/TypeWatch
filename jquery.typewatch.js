@@ -28,13 +28,13 @@
 			if ((elTxt.length >= options.captureLength && elTxt.toUpperCase() != timer.text)
 			|| (override && elTxt.length >= options.captureLength)) {
 				timer.text = elTxt.toUpperCase();
-				timer.cb(elTxt);
+				timer.cb(elTxt, timer.el);
 			}
 		};
 
 		function watchElement(elem) {
 			// Must be text or textarea
-			if (elem.type.toUpperCase() == "TEXT" || elem.nodeName.toUpperCase() == "TEXTAREA") {
+			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA") {
 
 				// Allocate timer element
 				var timer = {
@@ -58,7 +58,7 @@
 					var timerWait = timer.wait;
 					var overrideBool = false;
 
-					if (evt.keyCode == 13 && this.type.toUpperCase() == "TEXT") {
+					if (evt.keyCode == 13 && (this.type.toUpperCase() == "TEXT" || this.type.toUpperCase() == "PASSWORD")) {
 						timerWait = 1;
 						overrideBool = true;
 					}
