@@ -2,10 +2,10 @@
 *	TypeWatch 2.0 - Original by Denny Ferrassoli / Refactored by Charles Christolini
 *
 *	Examples/Docs: github.com/dennyferra/TypeWatch
-*	
+*
 *  Copyright(c) 2007 Denny Ferrassoli - DennyDotNet.com
 *  Coprright(c) 2008 Charles Christolini - BinaryPie.com
-*  
+*
 *  Dual licensed under the MIT and GPL licenses:
 *  http://www.opensource.org/licenses/mit-license.php
 *  http://www.gnu.org/licenses/gpl.html
@@ -26,7 +26,8 @@
 
 			// Fire if text >= options.captureLength AND text != saved txt OR if override AND text >= options.captureLength
 			if ((elTxt.length >= options.captureLength && elTxt.toUpperCase() != timer.text)
-			|| (override && elTxt.length >= options.captureLength)) {
+			|| (override && elTxt.length >= options.captureLength)
+      || (elTxt.length == 0 && timer.text)) {
 				timer.text = elTxt.toUpperCase();
 				timer.cb(elTxt, timer.el);
 			}
@@ -67,7 +68,7 @@
 						checkElement(timer, overrideBool)
 					}
 
-					// Clear timer					
+					// Clear timer
 					clearTimeout(timer.timer);
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
