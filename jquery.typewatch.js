@@ -26,15 +26,15 @@
 
 			// Fire if text >= options.captureLength AND text != saved txt OR if override AND text >= options.captureLength
 			if ((elTxt.length >= options.captureLength && elTxt.toUpperCase() != timer.text)
-			|| (override && elTxt.length >= options.captureLength)) {
+			|| (override && elTxt.length >= options.captureLength) || (elTxt.length == 0 && timer.text))  {
 				timer.text = elTxt.toUpperCase();
 				timer.cb(elTxt, timer.el);
 			}
 		};
 
 		function watchElement(elem) {
-			// Must be text or textarea
-			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA" || this.type.toUpperCase() == "SEARCH") {
+			// Must be: text, password, textarea or search
+			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA" || elem.type.toUpperCase() == "SEARCH") {
 
 				// Allocate timer element
 				var timer = {
@@ -73,6 +73,7 @@
 				};
 
 				jQuery(elem).keydown(startWatch);
+                		jQuery(elem).on('click', startWatch);
 			}
 		};
 
