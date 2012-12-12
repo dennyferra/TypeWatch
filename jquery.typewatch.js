@@ -34,7 +34,7 @@
 
 		function watchElement(elem) {
 			// Must be text or textarea
-			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA") {
+			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA" || this.type.toUpperCase() == "SEARCH") {
 
 				// Allocate timer element
 				var timer = {
@@ -58,7 +58,7 @@
 					var timerWait = timer.wait;
 					var overrideBool = false;
 
-					if (evt.keyCode == 13 && (this.type.toUpperCase() == "TEXT" || this.type.toUpperCase() == "PASSWORD")) {
+					if (evt.keyCode == 13 && (this.type.toUpperCase() == "TEXT" || this.type.toUpperCase() == "PASSWORD" || this.type.toUpperCase() == "SEARCH")) {
 						timerWait = 1;
 						overrideBool = true;
 					}
