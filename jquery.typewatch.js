@@ -35,7 +35,7 @@
 				|| (override && value.length >= options.captureLength))
 			{
 				timer.text = value.toUpperCase();
-				timer.cb(value, timer.el);
+				timer.cb.call(timer.el, value);
 			}
 		};
 

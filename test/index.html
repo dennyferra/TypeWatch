@@ -65,8 +65,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('input,textarea').typeWatch({
-				callback: function(text, element) {
-					alert('You entered: ' + text);
+				callback: function(text) {
+					alert('TypeWatch callback: ' + this.type + ' ' + value);
 				}
 			});
 		});
