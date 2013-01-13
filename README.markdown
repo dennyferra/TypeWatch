@@ -15,7 +15,7 @@ Example:
 // captureLength: Minimum # of characters necessary to fire the callback
 
 var options = {
-    callback: function (value) { alert('TypeWatch callback: ' + this.type + ' ' + value); },
+    callback: function (value) { alert('TypeWatch callback: (' + this.type + ') ' + value); },
     wait: 750,
     highlight: true,
     captureLength: 2
