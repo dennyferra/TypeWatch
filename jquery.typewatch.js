@@ -1,10 +1,11 @@
 /*
-*	TypeWatch 2.0 - Original by Denny Ferrassoli / Refactored by Charles Christolini
+*	TypeWatch 2.1
 *
 *	Examples/Docs: github.com/dennyferra/TypeWatch
 *	
-*  Copyright(c) 2007 Denny Ferrassoli - DennyDotNet.com
-*  Coprright(c) 2008 Charles Christolini - BinaryPie.com
+*  Copyright(c) 2013 
+*	Denny Ferrassoli - dennyferra.com
+*   Charles Christolini
 *  
 *  Dual licensed under the MIT and GPL licenses:
 *  http://www.opensource.org/licenses/mit-license.php
@@ -13,28 +14,34 @@
 
 (function(jQuery) {
 	jQuery.fn.typeWatch = function(o) {
+		// The default input types that are supported
+		var _supportedInputTypes =
+			['TEXT', 'TEXTAREA', 'PASSWORD', 'TEL', 'SEARCH', 'URL', 'EMAIL', 'DATETIME', 'DATE', 'MONTH', 'WEEK', 'TIME', 'DATETIME-LOCAL', 'NUMBER', 'RANGE'];
+
 		// Options
 		var options = jQuery.extend({
 			wait: 750,
 			callback: function() { },
 			highlight: true,
-			captureLength: 2
+			captureLength: 2,
+			inputTypes: _supportedInputTypes
 		}, o);
 
 		function checkElement(timer, override) {
-			var elTxt = jQuery(timer.el).val();
+			var value = jQuery(timer.el).val();
 
-			// Fire if text >= options.captureLength AND text != saved txt OR if override AND text >= options.captureLength
-			if ((elTxt.length >= options.captureLength && elTxt.toUpperCase() != timer.text)
-			|| (override && elTxt.length >= options.captureLength)) {
-				timer.text = elTxt.toUpperCase();
-				timer.cb(elTxt, timer.el);
+			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
+			if ((value.length >= options.captureLength && value.toUpperCase() != timer.text)
+				|| (override && value.length >= options.captureLength))
+			{
+				timer.text = value.toUpperCase();
+				timer.cb(value, timer.el);
 			}
 		};
 
 		function watchElement(elem) {
-			// Must be text or textarea
-			if (elem.type.toUpperCase() == "TEXT" || elem.type.toUpperCase() == "PASSWORD" || elem.nodeName.toUpperCase() == "TEXTAREA") {
+			var elementType = elem.type.toUpperCase();
+			if (jQuery.inArray(elementType, options.inputTypes) >= 0) {
 
 				// Allocate timer element
 				var timer = {
@@ -57,8 +64,10 @@
 				var startWatch = function(evt) {
 					var timerWait = timer.wait;
 					var overrideBool = false;
+					var evtElementType = this.type.toUpperCase();
 
-					if (evt.keyCode == 13 && (this.type.toUpperCase() == "TEXT" || this.type.toUpperCase() == "PASSWORD")) {
+					// If enter key is pressed and not a TEXTAREA and matched inputTypes
+					if (evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0) {
 						timerWait = 1;
 						overrideBool = true;
 					}
@@ -77,7 +86,7 @@
 		};
 
 		// Watch Each Element
-		return this.each(function(index) {
+		return this.each(function() {
 			watchElement(this);
 		});
 
