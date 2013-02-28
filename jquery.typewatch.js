@@ -22,6 +22,7 @@
 		var options = jQuery.extend({
 			wait: 750,
 			callback: function() { },
+			elsedo: function() { },
 			highlight: true,
 			captureLength: 2,
 			inputTypes: _supportedInputTypes
@@ -36,6 +37,9 @@
 			{
 				timer.text = value.toUpperCase();
 				timer.cb.call(timer.el, value);
+			} else {
+				timer.text = value.toUpperCase();
+				timer.ed.call(timer.el, value);
 			}
 		};
 
@@ -48,6 +52,7 @@
 					timer: null,
 					text: jQuery(elem).val().toUpperCase(),
 					cb: options.callback,
+					ed: options.elsedo,
 					el: elem,
 					wait: options.wait
 				};
