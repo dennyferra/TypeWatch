@@ -81,7 +81,7 @@
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
 
-				jQuery(elem).keydown(startWatch);
+				jQuery(elem).on('keydown input', startWatch);
 			}
 		};
 
