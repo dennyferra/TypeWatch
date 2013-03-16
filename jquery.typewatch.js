@@ -23,6 +23,7 @@
 			wait: 750,
 			callback: function() { },
 			highlight: true,
+			paste: true,
 			captureLength: 2,
 			inputTypes: _supportedInputTypes
 		}, o);
@@ -67,7 +68,7 @@
 					var evtElementType = this.type.toUpperCase();
 
 					// If enter key is pressed and not a TEXTAREA and matched inputTypes
-					if (evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0) {
+					if (evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0 || evt.type == 'paste') {
 						timerWait = 1;
 						overrideBool = true;
 					}
@@ -82,6 +83,9 @@
 				};
 
 				jQuery(elem).keydown(startWatch);
+				if(options.paste) {
+					jQuery(elem).on('paste', startWatch);
+				}
 			}
 		};
 
