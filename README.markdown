@@ -12,12 +12,14 @@ Example:
 // callback: The callback function
 // wait: The number of milliseconds to wait after the the last key press before firing the callback
 // highlight: Highlights the element when it receives focus
+// paste: Fire the callback when a user pastes content
 // captureLength: Minimum # of characters necessary to fire the callback
 
 var options = {
     callback: function (value) { alert('TypeWatch callback: (' + this.type + ') ' + value); },
     wait: 750,
     highlight: true,
+    paste: true,
     captureLength: 2
 }
 
