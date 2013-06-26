@@ -65,6 +65,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('input,textarea').typeWatch({
+				captureLength: 0,
 				callback: function(value) {
 					alert('TypeWatch callback: (' + this.type + ') ' + value);
 				}

@@ -81,7 +81,10 @@
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
 
-				jQuery(elem).keydown(startWatch);
+				jQuery(elem)
+					.keydown(startWatch)
+					.on('paste', startWatch)
+					.on('cut', startWatch);
 			}
 		};
 
