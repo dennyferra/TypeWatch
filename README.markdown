@@ -33,3 +33,7 @@ Works with multiple elements:
 ```javascript
 $(".textbox").typeWatch( options );
 ```
+
+Lastly, if you use or enjoy TypeWatch beer donations are always appreciated
+
+[Donate a beer, half a beer, or a 6-pack](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=95YL35K45G4VA&lc=US&item_name=Denny+Ferrassoli&currency_code=USD&bn=PP-DonationsBF%3Abtn_donate_SM.gif%3ANonHosted)
