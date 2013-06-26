@@ -30,7 +30,7 @@
 		</div>
 		<div>
 			EMAIL<br />
-			<input type="EMAIL" placeholder="Enter text" />
+			<input name="email" type="EMAIL" placeholder="Enter text" autocomplete="on" />
 		</div>
 		<div>
 			DATETIME<br />
@@ -65,7 +65,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('input,textarea').typeWatch({
-				captureLength: 0,
+				captureLength: 2,
 				callback: function(value) {
 					alert('TypeWatch callback: (' + this.type + ') ' + value);
 				}
