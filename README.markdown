@@ -20,13 +20,14 @@ var options = {
     callback: function (value) { alert('TypeWatch callback: (' + this.type + ') ' + value); },
     wait: 750,
     highlight: true,
-    captureLength: 2
+    captureLength: 2,
+    submitOnEnter: true
 }
 
 $("#search").typeWatch( options );
 ```
 
-When working with any element other than __TEXTAREA__ pressing the __ENTER__ key will fire the callback function.
+When working with any element other than __TEXTAREA__ pressing the __ENTER__ key will fire the callback function unless the submitOnEnter option is set to false.
 
 Works with multiple elements:
 

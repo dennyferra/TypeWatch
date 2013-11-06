@@ -24,7 +24,8 @@
 			callback: function() { },
 			highlight: true,
 			captureLength: 2,
-			inputTypes: _supportedInputTypes
+			inputTypes: _supportedInputTypes,
+      submitOnEnter: false
 		}, o);
 
 		function checkElement(timer, override) {
@@ -66,8 +67,8 @@
 					var overrideBool = false;
 					var evtElementType = this.type.toUpperCase();
 
-					// If enter key is pressed and not a TEXTAREA and matched inputTypes
-					if (typeof evt.keyCode != 'undefined' && evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0) {
+					// If enter key is pressed and not a TEXTAREA and matched inputTypes and submitOnEnter is true
+					if (options.submitOnEnter && typeof evt.keyCode != 'undefined' && evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0) {
 						timerWait = 1;
 						overrideBool = true;
 					}
@@ -91,4 +92,3 @@
 		});
 
 	};
-})(jQuery);
