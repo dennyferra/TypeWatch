@@ -12,14 +12,23 @@
 *  http://www.gnu.org/licenses/gpl.html
 */
 
-(function(jQuery) {
-	jQuery.fn.typeWatch = function(o) {
+!function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(root.jQuery);
+    }
+}(this, function($) {
+    'use strict';
+	$.fn.typeWatch = function(o) {
 		// The default input types that are supported
 		var _supportedInputTypes =
 			['TEXT', 'TEXTAREA', 'PASSWORD', 'TEL', 'SEARCH', 'URL', 'EMAIL', 'DATETIME', 'DATE', 'MONTH', 'WEEK', 'TIME', 'DATETIME-LOCAL', 'NUMBER', 'RANGE'];
 
 		// Options
-		var options = jQuery.extend({
+		var options = $.extend({
 			wait: 750,
 			callback: function() { },
 			highlight: true,
@@ -28,7 +37,7 @@
 		}, o);
 
 		function checkElement(timer, override) {
-			var value = jQuery(timer.el).val();
+			var value = $(timer.el).val();
 
 			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
 			if ((value.length >= options.captureLength && value.toUpperCase() != timer.text)
@@ -41,12 +50,12 @@
 
 		function watchElement(elem) {
 			var elementType = elem.type.toUpperCase();
-			if (jQuery.inArray(elementType, options.inputTypes) >= 0) {
+			if ($.inArray(elementType, options.inputTypes) >= 0) {
 
 				// Allocate timer element
 				var timer = {
 					timer: null,
-					text: jQuery(elem).val().toUpperCase(),
+					text: $(elem).val().toUpperCase(),
 					cb: options.callback,
 					el: elem,
 					wait: options.wait
@@ -54,7 +63,7 @@
 
 				// Set focus action (highlight)
 				if (options.highlight) {
-					jQuery(elem).focus(
+					$(elem).focus(
 						function() {
 							this.select();
 						});
@@ -67,7 +76,7 @@
 					var evtElementType = this.type.toUpperCase();
 
 					// If enter key is pressed and not a TEXTAREA and matched inputTypes
-					if (typeof evt.keyCode != 'undefined' && evt.keyCode == 13 && evtElementType != 'TEXTAREA' && jQuery.inArray(evtElementType, options.inputTypes) >= 0) {
+					if (typeof evt.keyCode != 'undefined' && evt.keyCode == 13 && evtElementType != 'TEXTAREA' && $.inArray(evtElementType, options.inputTypes) >= 0) {
 						timerWait = 1;
 						overrideBool = true;
 					}
@@ -81,7 +90,7 @@
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
 
-				jQuery(elem).on('keydown paste cut input', startWatch);
+				$(elem).on('keydown paste cut input', startWatch);
 			}
 		};
 
@@ -91,4 +100,4 @@
 		});
 
 	};
-})(jQuery);
+});
