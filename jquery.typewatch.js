@@ -1,9 +1,9 @@
 /*
-*	TypeWatch 2.2
+*	TypeWatch 2.2.1
 *
 *	Examples/Docs: github.com/dennyferra/TypeWatch
 *	
-*  Copyright(c) 2013 
+*  Copyright(c) 2014
 *	Denny Ferrassoli - dennyferra.com
 *   Charles Christolini
 *  
