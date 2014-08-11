@@ -4,6 +4,8 @@
 
 1. Support for clearing the input field:  https://github.com/dennyferra/TypeWatch/pull/18/files
 
+## About:
+
 TypeWatch calls a function when a user has typed text in an input or textarea (including HTML 5 input types) and after the user has stopped typing for a specified amount of time.
 
 > Note* This is not the OnChange event, instead the function is called after the user has finished typing (or if the user stopped typing for # amount of milliseconds) even if the input continues to have focus.
