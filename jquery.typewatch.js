@@ -40,8 +40,9 @@
 			var value = $(timer.el).val();
 
 			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
-			if ((value.length >= options.captureLength && value.toUpperCase() != timer.text)
-				|| (override && value.length >= options.captureLength))
+			if ( ( value.length >= options.captureLength && value.toUpperCase() != timer.text )  
+				|| ( override && value.length >= options.captureLength ) 
+				|| ( value.length == 0 && timer.text ) )
 			{
 				timer.text = value.toUpperCase();
 				timer.cb.call(timer.el, value);
@@ -90,7 +91,7 @@
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
 
-				$(elem).on('keydown paste cut input', startWatch);
+				$(elem).on('keydown paste cut input change', startWatch);
 			}
 		};
 
