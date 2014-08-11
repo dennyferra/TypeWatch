@@ -1,4 +1,4 @@
-# Fork of thee TypeWatch jQuery plugin w/ improvements & bug fixes #
+# Fork of the TypeWatch jQuery plugin w/ improvements & bug fixes #
 
 ## Changes in this Version:
 
