@@ -68,7 +68,12 @@
 				captureLength: 2,
 				callback: function(value) {
 					alert('TypeWatch callback: (' + this.type + ') ' + value);
-				}
+				},
+				event: 'finishedTyping'
+			});
+
+			$('input').on('finishedTyping', function(evt){
+				alert('TypeWatch event on '+evt.target);
 			});
 		});
 	</script>

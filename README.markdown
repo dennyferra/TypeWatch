@@ -15,12 +15,14 @@ Example:
 // wait: The number of milliseconds to wait after the the last key press before firing the callback
 // highlight: Highlights the element when it receives focus
 // captureLength: Minimum # of characters necessary to fire the callback
+// event: Optional name of a jQuery event that will be fired at the same time as the callback
 
 var options = {
     callback: function (value) { alert('TypeWatch callback: (' + this.type + ') ' + value); },
     wait: 750,
     highlight: true,
-    captureLength: 2
+    captureLength: 2,
+    event: 'typingDone'
 }
 
 $("#search").typeWatch( options );
@@ -34,6 +36,17 @@ Works with multiple elements:
 $(".textbox").typeWatch( options );
 ```
 
+You can also have typeWatch fire an event when typing is finished, by specifying the `event` option
+```javascript
+var options = {
+	event: 'typingDone'
+}
+$("input").typeWatch(options)
+
+$("input.name").on('typingDone', function(evt){
+	// Do something
+});
+```
 Lastly, if you use or enjoy TypeWatch beer donations are always appreciated
 
 [Donate a beer, half a beer, or a 6-pack](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=95YL35K45G4VA&lc=US&item_name=Denny+Ferrassoli&currency_code=USD&bn=PP-DonationsBF%3Abtn_donate_SM.gif%3ANonHosted)

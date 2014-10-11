@@ -33,7 +33,8 @@
 			callback: function() { },
 			highlight: true,
 			captureLength: 2,
-			inputTypes: _supportedInputTypes
+			inputTypes: _supportedInputTypes,
+			event: false
 		}, o);
 
 		function checkElement(timer, override) {
@@ -45,6 +46,8 @@
 			{
 				timer.text = value.toUpperCase();
 				timer.cb.call(timer.el, value);
+				if( options.event )
+					$(timer.el).trigger( options.event )
 			}
 		};
 
