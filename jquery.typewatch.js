@@ -63,7 +63,7 @@
 
 				// Set focus action (highlight)
 				if (options.highlight) {
-					$(elem).focus(
+					$(elem).click(
 						function() {
 							this.select();
 						});
