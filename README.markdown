@@ -1,4 +1,10 @@
-# The official home for the TypeWatch jQuery plugin. #
+# Fork of the TypeWatch jQuery plugin w/ improvements & bug fixes #
+
+## Changes in this Version:
+
+1. Support for clearing the input field:  https://github.com/dennyferra/TypeWatch/pull/18/files
+
+## About:
 
 TypeWatch calls a function when a user has typed text in an input or textarea (including HTML 5 input types) and after the user has stopped typing for a specified amount of time.
 
