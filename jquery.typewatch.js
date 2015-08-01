@@ -1,5 +1,5 @@
 /*
-*	TypeWatch 2.2.1
+*	TypeWatch 2.2.2
 *
 *	Examples/Docs: github.com/dennyferra/TypeWatch
 *	
