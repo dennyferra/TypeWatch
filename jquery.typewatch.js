@@ -29,6 +29,7 @@
 			callback: function() { },
 			highlight: true,
 			captureLength: 2,
+			allowSubmit: false,
 			inputTypes: _supportedInputTypes
 		}, o);
 
@@ -50,7 +51,7 @@
 
 			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
 			if ((value.length >= options.captureLength && value.toUpperCase() != timer.text)
-				|| (override && value.length >= options.captureLength))
+				|| (override && (value.length >= options.captureLength||options.allowSubmit))
 			{
 				timer.text = value.toUpperCase();
 				timer.cb.call(timer.el, value);
