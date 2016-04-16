@@ -36,11 +36,11 @@
 			var value = $(timer.el).val();
 
 			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
-			if ( ( value.length >= options.captureLength && value.toUpperCase() != timer.text )  
+			if ( ( value.length >= options.captureLength && value != timer.text )  
 				|| ( override && value.length >= options.captureLength ) 
 				|| ( value.length == 0 && timer.text ) )
 			{
-				timer.text = value.toUpperCase();
+				timer.text = value;
 				timer.cb.call(timer.el, value);
 			}
 		};
@@ -49,10 +49,10 @@
 			var value = jQuery(timer.el).html();
 
 			// Fire if text >= options.captureLength AND text != saved text OR if override AND text >= options.captureLength
-			if ((value.length >= options.captureLength && value.toUpperCase() != timer.text)
+			if ((value.length >= options.captureLength && value != timer.text)
 				|| (override && value.length >= options.captureLength))
 			{
-				timer.text = value.toUpperCase();
+				timer.text = value;
 				timer.cb.call(timer.el, value);
 			}
 		};
@@ -67,7 +67,7 @@
 					// Allocate timer element
 					var timer = {
 						timer: null,
-						text: jQuery(elem).val().toUpperCase(),
+						text: jQuery(elem).val(),
 						cb: options.callback,
 						el: elem,
 						wait: options.wait
@@ -108,7 +108,7 @@
 					// Allocate timer element
 					var timer = {
 						timer: null,
-						text: jQuery(elem).html().toUpperCase(),
+						text: jQuery(elem).html(),
 						cb: options.callback,
 						el: elem,
 						wait: options.wait
