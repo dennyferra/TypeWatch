@@ -1,6 +1,6 @@
 # The official home for the TypeWatch jQuery plugin. #
 
-TypeWatch calls a function when a user has typed text in an input or textarea (including HTML 5 input types) and after the user has stopped typing for a specified amount of time.
+TypeWatch calls a function when a user has typed text in an input, textarea and changes in div from editors (including HTML 5 input types) and after the user has stopped typing for a specified amount of time.
 
 > Note* This is not the OnChange event, instead the function is called after the user has finished typing (or if the user stopped typing for # amount of milliseconds) even if the input continues to have focus.
 
@@ -17,7 +17,7 @@ Example:
 // captureLength: Minimum # of characters necessary to fire the callback
 
 var options = {
-    callback: function (value) { alert('TypeWatch callback: (' + this.type + ') ' + value); },
+    callback: function (value) { console.log('TypeWatch callback: (' + this.type + ') ' + value); },
     wait: 750,
     highlight: true,
     captureLength: 2
@@ -26,12 +26,14 @@ var options = {
 $("#search").typeWatch( options );
 ```
 
-When working with any element other than __TEXTAREA__ pressing the __ENTER__ key will fire the callback function.
++ When working with any element other than __TEXTAREA__ pressing the __ENTER__ key will fire the callback function.
++ When working with any editor which supports __DIV__ it works as a normal input box.
++ The cut and paste events are also included.
 
 Works with multiple elements:
 
 ```javascript
-$(".textbox").typeWatch( options );
+$(".textbox,input,textarea,#search").typeWatch( options );
 ```
 
 Lastly, if you use or enjoy TypeWatch beer donations are always appreciated
