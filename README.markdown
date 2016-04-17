@@ -14,12 +14,14 @@ Example:
 // callback: The callback function
 // wait: The number of milliseconds to wait after the the last key press before firing the callback
 // highlight: Highlights the element when it receives focus
+// allowSubmit: Allows a non-multiline element to be submitted (enter key) regardless of captureLength
 // captureLength: Minimum # of characters necessary to fire the callback
 
 var options = {
-    callback: function (value) { console.log('TypeWatch callback: (' + this.type + ') ' + value); },
+    callback: function (value) { console.log('TypeWatch callback: (' + (this.type || this.nodeName) + ') ' + value); },
     wait: 750,
     highlight: true,
+    allowSubmit: false,
     captureLength: 2
 }
 
@@ -27,7 +29,7 @@ $("#search").typeWatch( options );
 ```
 
 + When working with any element other than __TEXTAREA__ pressing the __ENTER__ key will fire the callback function.
-+ When working with any editor which supports __DIV__ it works as a normal input box.
++ When working with any editor which supports __DIV__ it works like a textarea.
 + The cut and paste events are also included.
 
 Works with multiple elements:
