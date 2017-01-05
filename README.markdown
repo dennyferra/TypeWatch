@@ -1,5 +1,7 @@
 # The official home for the TypeWatch jQuery plugin. #
 
+[![CDNJS](https://img.shields.io/cdnjs/v/TypeWatch.svg)](https://cdnjs.com/libraries/TypeWatch)
+
 TypeWatch calls a function when a user has typed text in an input, textarea and changes in div from editors (including HTML 5 input types) and after the user has stopped typing for a specified amount of time.
 
 > Note* This is not the OnChange event, instead the function is called after the user has finished typing (or if the user stopped typing for # amount of milliseconds) even if the input continues to have focus.
