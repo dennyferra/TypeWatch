@@ -92,7 +92,7 @@
 					timer.timer = setTimeout(timerCallbackFx, timerWait);
 				};
 
-				jQuery(elem).on('keydown paste cut input', startWatch);
+                jQuery(elem).bind('keydown.typewatch paste.typewatch cut.typewatch input.typewatch',startWatch);
 			}
 		};
 
