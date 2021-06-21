@@ -1,0 +1,28 @@
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+  - cron: '36 0 * * *'
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/stale@v3
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        days-before-stale: 90
+        days-before-close: 5
+        days-before-pr-close: -1
+        exempt-issue-labels: 'enhancement,bug'
+        exempt-pr-labels: 'enhancement,bug'
+        exempt-all-pr-assignees: true
+        stale-issue-message: 'This issue is stale because it has been open 90 days with no activity. Remove stale label, add a comment, or this will be closed in 5 days.'
+        close-issue-message: 'This issue was closed due to no activity.'
+        stale-issue-label: 'no-issue-activity'
+        stale-pr-label: 'no-pr-activity'
