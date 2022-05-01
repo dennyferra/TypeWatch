@@ -22,10 +22,7 @@
     "jquery"
   ],
   "author": "Denny Ferrassoli",
-  "licenses": [
-    "MIT",
-    "GPL-3.0"
-  ],
+  "license": "(MIT or GPL-3.0)",
   "bugs": {
     "url": "https://github.com/dennyferra/TypeWatch/issues"
   },
