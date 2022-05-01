@@ -1,6 +1,6 @@
 {
   "name": "jquery.typewatch",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "TypeWatch watches input and delays execution until typing has stopped.",
   "main": "jquery.typewatch.js",
   "directories": {
